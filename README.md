@@ -1,4 +1,4 @@
-# MongoDB, Mongo Express & Monitoring with Prometheus and Grafana on Kubernetes
+![image](https://github.com/user-attachments/assets/1f36582b-d9e8-4fa2-a6e4-9473987c7536)# MongoDB, Mongo Express & Monitoring with Prometheus and Grafana on Kubernetes
 
 ## Project Overview
 This project sets up MongoDB and Mongo Express in a Kubernetes environment, providing a web interface to interact with MongoDB. Additionally, Prometheus and Grafana are integrated to monitor MongoDB and its associated services.
@@ -53,7 +53,8 @@ Or Alternatively, you can apply all the YAML files in the current directory usin
 kubectl apply -f .
 ```
 
-###############################################################################################################################################################
+##################################################################################################################################
+
 # Mongodb-and-express-monitoring-
 MongoDb-and-MongoExpress deployment using Kubernetes with PV and PVC and adding Prometheus and Grafana setup in Minikube for monitor our Kubernetes Cluster
 
@@ -75,6 +76,11 @@ helm install prometheus prometheus-community/prometheus --namespace monitoring
 helm install grafana grafana/grafana --namespace monitoring
 ```
 
+### we can check the status by running:
+ ```bash
+kubectl get pods -l app.kubernetes.io/instance=prometheus
+```
+
 ### To expose the prometheus service
 ```bash
 kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np
@@ -84,6 +90,7 @@ kubectl expose service prometheus-server --type=NodePort --target-port=9090 --na
 ```bash
 minikube service prometheus-server-np
 ```
+
 ### To expose the Grafana service
 ```bash
 kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np
@@ -96,13 +103,23 @@ minikube service grafana-np
 
 ### To get the Grafana admin password, run the following:
 ```bash
-echo "The Grafana admin password is:" && kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode
+echo "The Grafana uusername is admin & admin password is:" && kubectl get secret --namespace monitoring grafana -o jsonpath="{.data.admin-password}" | base64 --decode
 ```
+##################################################################################################################################
 
+## Configure Prometheus Datasource: 
 
+Once we're logged in to the admin interface, it's time to configure the Prometheus Datasource.
+We need to head to Connections > Datasources and add a new Prometheus instance.
 
+![Screenshot-from-2020-10-13-13-53-16](https://github.com/user-attachments/assets/71025699-66e4-4914-9813-9c2c85285c2f)
 
+Note: The URL for our Prometheus instance is the name of the service http://prometheus-server:80.
 
+###  Configure Grafana Dashboards: 
+we'll set up one of the many already available community provided Kubernetes Dashboards.
+1- We head to Create (+) > Import section to Import via grafana.com and we set 6417 into the id field and click Load.
+2- In the dashboard configuration we need to select the Prometheus Datasource we created in the earlier step.
 
 
 
