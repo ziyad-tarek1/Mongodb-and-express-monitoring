@@ -1,6 +1,9 @@
 # Mongodb-and-express-monitoring-
 MongoDb-and-MongoExpress deployment using Kubernetes with PV and PVC and adding Prometheus and Grafana setup in Minikube for monitor our Kubernetes Cluster
 
+### Ensure that your Kubernetes cluster has an ingress controller installed to handle Ingress resources
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
+helm install nginx-ingress ingress-nginx/ingress-nginx --namespace ingress-nginx --create-namespace
 
 
 
