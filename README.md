@@ -23,14 +23,15 @@ Ensure you have an active Kubernetes cluster running before proceeding.
 
 ## Kubernetes Resources
 This project contains the following key Kubernetes manifest files:
-1. **mongo-config.yaml**: ConfigMap for MongoDB service URL.
-2. **mongo-secrets.yaml**: Secret for MongoDB credentials (base64 encoded).
-3. **mongodb-deployment-service.yaml**: Deployment and Service for MongoDB.
-4. **mongo_express-deployment-service.yaml**: Deployment and Service for Mongo Express.
-5. **mongo-express-ingress.yaml**: Ingress resource for accessing Mongo Express through a hostname.
-6. **mongodb-pv.yaml**: PersistentVolume and PersistentVolumeClaim for MongoDB storage.
-7. **mongodb-exporter.yaml**: MongoDB exporter for Prometheus monitoring.
-8. **prometheus-values.yaml**: Custom values for Prometheus setup (optional).
+1. **configmap.yaml**: ConfigMap for MongoDB service URL.
+2. **secrets.yaml**: Secret for MongoDB credentials (base64 encoded).
+3. **mongodb-deployment.yaml**: Deployment for MongoDB.
+4. **mongodb-service.yaml**: Service for MongoDB.
+5. **mongo_express-deployment.yaml**: Deployment for Mongo Express.
+6. **mongo_express-service.yaml**: Service for Mongo Express.
+7. **Ingress.yaml**: Ingress resource for accessing Mongo Express through a hostname.
+8. **mongodb-pv.yaml**: PersistentVolume and PersistentVolumeClaim for MongoDB storage.
+
 
 ## Step-by-Step Deployment
 
@@ -38,12 +39,18 @@ This project contains the following key Kubernetes manifest files:
 Start by applying the Kubernetes manifests for MongoDB and Mongo Express.
 
 ```bash
-kubectl apply -f config.yaml
+kubectl apply -f configmap.yaml
 kubectl apply -f secrets.yaml
+kubectl apply -f mongodb-deployment.yaml
+kubectl apply -f mongodb-service.yaml
+kubectl apply -f mongo_express-deployment.yaml
+kubectl apply -f mongo_express-service.yaml
+kubectl apply -f Ingress.yaml
 kubectl apply -f mongodb-pv.yaml
-kubectl apply -f mongodb-deployment-service.yaml
-kubectl apply -f mongo_express-deployment-service.yaml
-kubectl apply -f mongo-express-ingress.yaml
+```
+Or Alternatively, you can apply all the YAML files in the current directory using a single command:
+```bash
+kubectl apply -f .
 ```
 
 ###############################################################################################################################################################
