@@ -126,9 +126,9 @@ we'll set up one of the many already available community provided Kubernetes Das
 
 ### 1. install Mongodb-exporter
 ```bash
-helm install mongodb-exporter prometheus-community/prometheus-mongodb-exporter
+helm install mongodb-exporter prometheus-community/prometheus-mongodb-exporter -f values.yaml
 ```
-### 2. Mongodb-exporter
+### 2. Expose the Mongodb-exporter
 
 ```bash
 kubectl port-forward service/mongodb-exporter-prometheus-mongodb-exporter 9216  
