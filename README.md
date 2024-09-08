@@ -38,8 +38,8 @@ This project contains the following key Kubernetes manifest files:
 Start by applying the Kubernetes manifests for MongoDB and Mongo Express.
 
 ```bash
-kubectl apply -f mongo-config.yaml
-kubectl apply -f mongo-secrets.yaml
+kubectl apply -f config.yaml
+kubectl apply -f secrets.yaml
 kubectl apply -f mongodb-pv.yaml
 kubectl apply -f mongodb-deployment-service.yaml
 kubectl apply -f mongo_express-deployment-service.yaml
