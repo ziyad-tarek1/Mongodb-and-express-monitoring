@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/1f36582b-d9e8-4fa2-a6e4-9473987c7536)# MongoDB, Mongo Express & Monitoring with Prometheus and Grafana on Kubernetes
 
 ## Project Overview
 This project sets up MongoDB and Mongo Express in a Kubernetes environment, providing a web interface to interact with MongoDB. Additionally, Prometheus and Grafana are integrated to monitor MongoDB and its associated services.
@@ -117,6 +116,7 @@ echo "The Grafana uusername is admin & admin password is:" && kubectl get secret
 Once we're logged in to the admin interface, it's time to configure the Prometheus Datasource.
 We need to head to Connections > Datasources and add a new Prometheus instance.
 Note: The URL for our Prometheus instance is the name of the service http://prometheus-server:80.
+![image](https://github.com/user-attachments/assets/1f36582b-d9e8-4fa2-a6e4-9473987c7536)# MongoDB, Mongo Express & Monitoring with Prometheus and Grafana on Kubernetes
 
 ###  Configure Grafana Dashboards: 
 we'll set up one of the many already available community provided Kubernetes Dashboards.
