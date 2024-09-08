@@ -112,8 +112,7 @@ echo "The Grafana uusername is admin & admin password is:" && kubectl get secret
 Once we're logged in to the admin interface, it's time to configure the Prometheus Datasource.
 We need to head to Connections > Datasources and add a new Prometheus instance.
 
-![Screenshot-from-2020-10-13-13-53-16](https://github.com/user-attachments/assets/71025699-66e4-4914-9813-9c2c85285c2f)
-
+<img src="https://github.com/user-attachments/assets/1f36582b-d9e8-4fa2-a6e4-9473987c7536" style="position: absolute; top: 100px; left: 50px;">
 Note: The URL for our Prometheus instance is the name of the service http://prometheus-server:80.
 
 ###  Configure Grafana Dashboards: 
