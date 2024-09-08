@@ -34,6 +34,11 @@ This project contains the following key Kubernetes manifest files:
 
 
 ## Step-by-Step Deployment
+### Initializing your minikube cluster
+
+```bash
+minikube start --cpus 4 --memory 8192 --vm-driver hyperkit
+```
 
 ### 1. Deploy MongoDB and Mongo Express
 Start by applying the Kubernetes manifests for MongoDB and Mongo Express.
@@ -107,18 +112,27 @@ echo "The Grafana uusername is admin & admin password is:" && kubectl get secret
 ```
 ##################################################################################################################################
 
-## Configure Prometheus Datasource: 
+### Configure Prometheus Datasource: 
 
 Once we're logged in to the admin interface, it's time to configure the Prometheus Datasource.
 We need to head to Connections > Datasources and add a new Prometheus instance.
-
-<img src="https://github.com/user-attachments/assets/1f36582b-d9e8-4fa2-a6e4-9473987c7536" style="position: absolute; top: 100px; left: 50px;">
 Note: The URL for our Prometheus instance is the name of the service http://prometheus-server:80.
 
 ###  Configure Grafana Dashboards: 
 we'll set up one of the many already available community provided Kubernetes Dashboards.
 1- We head to Create (+) > Import section to Import via grafana.com and we set 6417 into the id field and click Load.
 2- In the dashboard configuration we need to select the Prometheus Datasource we created in the earlier step.
+
+
+### 1. install Mongodb-exporter
+```bash
+helm install mongodb-exporter prometheus-community/prometheus-mongodb-exporter
+```
+### 2. Mongodb-exporter
+
+```bash
+kubectl port-forward service/mongodb-exporter-prometheus-mongodb-exporter 9216  
+```
 
 
 
