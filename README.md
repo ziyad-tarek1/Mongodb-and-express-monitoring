@@ -52,10 +52,7 @@ kubectl apply -f mongo_express-service.yaml
 kubectl apply -f Ingress.yaml
 kubectl apply -f mongodb-pv.yaml
 ```
-Or Alternatively, you can apply all the YAML files in the current directory using a single command:
-```bash
-kubectl apply -f .
-```
+
 
 ##################################################################################################################################
 
