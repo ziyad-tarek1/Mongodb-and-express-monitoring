@@ -66,7 +66,7 @@ helm install nginx-ingress ingress-nginx/ingress-nginx --namespace ingress-nginx
 ```
 
 
-## Prometheus and Grafana setup in Minikube using Helm
+## setting-up-monitoring-with-prometheus-and-grafana
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo add grafana https://grafana.github.io/helm-charts
@@ -131,7 +131,10 @@ helm install mongodb-exporter prometheus-community/prometheus-mongodb-exporter -
 kubectl port-forward service/mongodb-exporter-prometheus-mongodb-exporter 9216  
 ```
 
-
+## Troubleshooting
+1. Mongo Express Not Accessible: Ensure that Ingress is set up properly and that the host is added to your local DNS resolution (e.g., /etc/hosts).
+2. MongoDB Connection Issues: Double-check the Secret and ConfigMap for the correct credentials and service URL.
+3. Grafana Not Loading: Ensure the Prometheus and Grafana services are running, and port forwarding is done correctly.
 
 ## Flow Chart Diagram
 
