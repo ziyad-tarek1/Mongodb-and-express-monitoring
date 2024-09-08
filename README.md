@@ -130,7 +130,17 @@ helm install mongodb-exporter prometheus-community/prometheus-mongodb-exporter -
 ```bash
 kubectl port-forward service/mongodb-exporter-prometheus-mongodb-exporter 9216  
 ```
+## Accessing Services
+1. Access Mongo Express
+   If you are using the Ingress resource, ensure that you have an Ingress controller (e.g., NGINX) set up in your cluster. Access Mongo Express using the host defined in the Ingress.yaml.
+```bash
+   http://mongodb.ui.com
+```
+Ensure the host is added to your local /etc/hosts file for local resolution:
 
+```bash
+127.0.0.1 mongodb.ui.com
+```
 ## Troubleshooting
 1. Mongo Express Not Accessible: Ensure that Ingress is set up properly and that the host is added to your local DNS resolution (e.g., /etc/hosts).
 2. MongoDB Connection Issues: Double-check the Secret and ConfigMap for the correct credentials and service URL.
