@@ -36,7 +36,7 @@ This project contains the following key Kubernetes manifest files:
 ### Initializing your minikube cluster
 
 ```bash
-minikube start --cpus 4 --memory 8192 --vm-driver hyperkit
+minikube start --cpus 4 --memory 8192
 ```
 
 ### 1. Deploy MongoDB and Mongo Express
